@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> Mighty Chondria </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="online teaching platform" name="keywords">
+    <meta name="description" content="online teaching platform that 
+    helps students in the medical fields  learn complex and difficult 
+    topics in an engaging, fun, and easy way in the Arabic language ."/> 
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Customized Bootstrap Stylesheet -->
+<link href="css/style.css" rel="stylesheet">
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyAUF4fIpd4aZ8ow5XPeAQaTdjcHraCSWZM",
+          authDomain: "mighty-chondria-fd24a.firebaseapp.com",
+          projectId: "mighty-chondria-fd24a",
+          storageBucket: "mighty-chondria-fd24a.appspot.com",
+          messagingSenderId: "918162765531",
+          appId: "1:918162765531:web:98baf7895d62f06e8b3efe",
+          measurementId: "G-ZCHE3C0B0R"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+      <div class="container my-5">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#toggleContent" aria-expanded="false" aria-controls="toggleContent">
+        Questions and Pomodoro
+    </button>
+    <div class="collapse mt-3" id="toggleContent">
+        <div class="card card-body">
+            <h2>Questions</h2>
+            <ul>
+                <li>What is the main focus of this course?</li>
+                <li>How can I best utilize the resources provided?</li>
+                <li>What are the key takeaways from each module?</li>
+            </ul>
+
+            <h2>Pomodoro Technique</h2>
+            <p>The Pomodoro Technique is a time management method developed by Francesco Cirillo. Here’s how you can use it:</p>
+            <ol>
+                <li>Choose a task to be accomplished.</li>
+                <li>Set a timer for 25 minutes.</li>
+                <li>Work on the task until the timer goes off.</li>
+                <li>Take a short break (5 minutes).</li>
+                <li>Every four Pomodoros, take a longer break (15-30 minutes).</li>
+            </ol>
+            <button class="btn btn-primary" onclick="startPomodoro()">Start Pomodoro</button>
+            <div id="pomodoroTimer" class="mt-3"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let pomodoroInterval;
+    function startPomodoro() {
+        let timer = 25 * 60;
+        const display = document.getElementById('pomodoroTimer');
+        display.textContent = `25:00`;
+
+        if (pomodoroInterval) clearInterval(pomodoroInterval);
+
+        pomodoroInterval = setInterval(() => {
+            const minutes = Math.floor(timer / 60);
+            const seconds = timer % 60;
+            display.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (--timer < 0) {
+                clearInterval(pomodoroInterval);
+                alert('Pomodoro complete! Take a break.');
+            }
+        }, 1000);
+    }
+</script>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> Mighty Chondria </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="online teaching platform" name="keywords">
+    <meta name="description" content="online teaching platform that 
+    helps students in the medical fields  learn complex and difficult 
+    topics in an engaging, fun, and easy way in the Arabic language ."/> 
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+<body> 
+    <style>body { 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        font-family: sans-serif; 
+        line-height: 1.5; 
+        min-height: 100vh; 
+        background: #f3f3f3; 
+        flex-direction: column; 
+        margin: 0; 
+    } 
+      
+    .main { 
+        background-color: #fff; 
+        border-radius: 15px; 
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+        padding: 10px 20px; 
+        transition: transform 0.2s; 
+        width: 500px; 
+        height: 400px; 
+        text-align: center; 
+    } 
+      
+    .timer-circle { 
+        border-radius: 50%; 
+        width: 200px; 
+        height: 200px; 
+        margin: 20px auto; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        font-size: 25px; 
+        color: crimson; 
+        border: 8px solid #3498db; 
+    } 
+      
+    .control-buttons { 
+        margin-top: 75px; 
+        display: flex; 
+        justify-content: space-evenly; 
+    } 
+      
+    .control-buttons button { 
+        background-color: #3498db; 
+        color: #fff; 
+        border: none; 
+        padding: 10px 20px; 
+        border-radius: 5px; 
+        cursor: pointer; 
+    } 
+      
+    .control-buttons button:hover { 
+        background-color: #266094; 
+        transition: background-color 0.3s; 
+    }</style>
+
+    <h1 class="text-white "> 
+          Study with Mighty-Chondria
+      </h1> 
+    <div class="main"> 
+        <div class="timer-circle" 
+             id="timer">15:00 
+          </div> 
+        <div class="control-buttons"> 
+            <button onclick="togglePauseResume()"> 
+                  Pause 
+              </button> 
+            <button onclick="restartTimer()"> 
+                  Restart 
+              </button> 
+            <button onclick="chooseTime()"> 
+                  Choose Time 
+              </button> 
+        </div> 
+    </div> 
+    <script>let timer; 
+        let minutes = 15; 
+        let seconds = 0; 
+        let isPaused = false; 
+        let enteredTime = null; 
+          
+        function startTimer() { 
+            timer = setInterval(updateTimer, 1000); 
+        } 
+          
+        function updateTimer() { 
+            const timerElement = 
+                document.getElementById('timer'); 
+            timerElement.textContent =  
+                formatTime(minutes, seconds); 
+          
+            if (minutes === 0 && seconds === 0) { 
+                clearInterval(timer); 
+                alert('Time is up! Take a break.'); 
+            } else if (!isPaused) { 
+                if (seconds > 0) { 
+                    seconds--; 
+                } else { 
+                    seconds = 59; 
+                    minutes--; 
+                } 
+            } 
+        } 
+          
+        function formatTime(minutes, seconds) { 
+            return 
+            `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`; 
+        } 
+          
+        function togglePauseResume() { 
+            const pauseResumeButton = 
+                document.querySelector('.control-buttons button'); 
+            isPaused = !isPaused; 
+          
+            if (isPaused) { 
+                clearInterval(timer); 
+                pauseResumeButton.textContent = 'Resume'; 
+            } else { 
+                startTimer(); 
+                pauseResumeButton.textContent = 'Pause'; 
+            } 
+        } 
+          
+        function restartTimer() { 
+            clearInterval(timer); 
+            minutes = enteredTime || 15; 
+            seconds = 0; 
+            isPaused = false; 
+            const timerElement = 
+                document.getElementById('timer'); 
+            timerElement.textContent = 
+                formatTime(minutes, seconds); 
+            const pauseResumeButton = 
+                document.querySelector('.control-buttons button'); 
+            pauseResumeButton.textContent = 'Pause'; 
+            startTimer(); 
+        } 
+          
+        function chooseTime() { 
+            const newTime = prompt('Enter new time in minutes:'); 
+            if (!isNaN(newTime) && newTime > 0) { 
+                enteredTime = parseInt(newTime); 
+                minutes = enteredTime; 
+                seconds = 0; 
+                isPaused = false; 
+                const timerElement = 
+                    document.getElementById('timer'); 
+                timerElement.textContent = 
+                    formatTime(minutes, seconds); 
+                clearInterval(timer); 
+                const pauseResumeButton = 
+                    document.querySelector('.control-buttons button'); 
+                pauseResumeButton.textContent = 'Pause'; 
+                startTimer(); 
+            } else { 
+                alert('Invalid input. Please enter'+ 
+                      ' a valid number greater than 0.'); 
+            } 
+        } 
+          
+        startTimer();
+        </script> 
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    
+</body>
+
+</html>

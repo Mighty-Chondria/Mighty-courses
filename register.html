@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> Register </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="online teaching platform" name="keywords">
+    <meta name="description" content="online teaching platform that 
+    helps students in the medical fields  learn complex and difficult 
+    topics in an engaging, fun, and easy way in the Arabic language ."/>
+
+     
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/register.css" rel="stylesheet">
+
+
+</head>
+<body>
+
+
+    <div class="form-container">
+        <h1 class="heading">Register</h1>
+        <form id="registerForm">
+            <input type="text" id="name" placeholder="Name" autocomplete="off" class="name" required>
+            <input type="email" id="email" placeholder="Email" autocomplete="off" class="email" required>
+            <input type="password" id="password" placeholder="Password" autocomplete="off" class="password" required>
+            <button class="submit-btn" type="submit">Register</button>
+        </form>
+        <a href="login.html" class="link">Already have an account? Log in here</a>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="firebaseConfig.js"></script>
+    <script src="register.js"></script>
+    
+</body>
+</html>
